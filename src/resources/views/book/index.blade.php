@@ -1,4 +1,4 @@
-@extends('layout.default')
+@extends('layouts.default')
 <style>
     th {
         background-color: #289ADC;
@@ -16,6 +16,19 @@
         text-align: center;
     }
 </style>
-@section('title', 'book.index.php')
+@section('title', 'book.index.blade.php')
 
 @section('content')
+<table>
+    <tr>
+        <th>Books</th>
+    </tr>
+    @foreach ($items as $item)
+    <tr>
+        <td>
+            {{$item->getTitle()}}
+        </td>
+    </tr>
+    @endforeach
+</table>
+@endsection

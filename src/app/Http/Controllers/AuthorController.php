@@ -59,4 +59,13 @@ class AuthorController extends Controller
         Author::find($request->id)->delete();
         return redirect('/');
     }
+    public function verror()
+    {
+        return view('verror');
+    }
+    public function relate(Request $request) //追記
+    {
+        $items = Author::all();
+        return view('author.index', ['items' => $items]);
+    }
 }

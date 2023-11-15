@@ -10,7 +10,7 @@ class Author extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'age', 'nationality'];
-
+    protected $table = 'authors';
     // 追記：ここから
     public function getDetail()
     {
@@ -18,4 +18,8 @@ class Author extends Model
         return $txt;
     }
     // 追記：ここまで
+    public function book()
+    {
+        return $this->hasOne('App\Models\Book');
+    }
 }

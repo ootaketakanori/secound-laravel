@@ -15,18 +15,34 @@
         background-color: #EEEEEE;
         text-align: center;
     }
+
+    td table tbody tr td {
+        background-color: #EEEEEE !important;
+    }
 </style>
-@section('title', 'book.index.blade.php')
+@section('title', 'author.index.blade.php')
 
 @section('content')
 <table>
     <tr>
-        <th>Books</th>
+        <th>Author</th>
+        <th>Book</th>
     </tr>
     @foreach ($items as $item)
     <tr>
         <td>
-            {{$item->getTitle()}}
+            {{$item->getDetail()}}
+        </td>
+        <td>
+            @if ($item->books != null)
+            <table width="100%">
+                @foreach ($item->books as $obj)
+                <tr>
+                    <td>{{ $obj->getTitle() }}</td>
+                </tr>
+                @endforeach
+            </table>
+            @endif
         </td>
     </tr>
     @endforeach

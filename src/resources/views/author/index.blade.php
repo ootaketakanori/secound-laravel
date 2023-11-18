@@ -10,53 +10,32 @@
         background-color: #FFFFFF;
     }
 
-    td table {
-        margin: 0 auto;
-    }
-
     td {
         padding: 25px 40px;
         background-color: #EEEEEE;
         text-align: center;
     }
 
-    td table tbody tr td {
-        background-color: #EEEEEE !important;
+    svg.w-5.h-5 {
+        /*paginateメソッドの矢印の大きさ調整のために追加*/
+        width: 30px;
+        height: 30px;
     }
 </style>
-@section('title', 'author.index.blade.php')
+@section('title', 'index.blade.php')
 
 @section('content')
 <table>
     <tr>
-        <th>Author</th>
-        <th>Book</th>
+        <th>Data</th>
     </tr>
-    @foreach ($hasItems as $item)
+    @foreach ($authors as $author)
     <tr>
         <td>
-            {{$item->getDetail()}}
-        </td>
-        <td>
-            <table>
-                @foreach ($item->books as $obj)
-                <tr>
-                    <td>{{ $obj->getTitle() }}</td>
-                </tr>
-                @endforeach
-            </table>
+            {{$author->getDetail()}}
         </td>
     </tr>
     @endforeach
 </table>
-<table>
-    <tr>
-        <th>Author</th>
-    </tr>
-    @foreach ($noItems as $item)
-    <tr>
-        <td>{{ $item->getDetail() }}</td>
-    </tr>
-    @endforeach
-</table>
+{{ $authors->links() }}
 @endsection
